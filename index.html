@@ -153,7 +153,7 @@
       min-width: 0;
     }
 
-    。pane-title strong {
+    .pane-title strong {
       color: var(--text-on-dark);
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
       font-size: 14px;
@@ -343,7 +343,7 @@
 
     .sheet,
     .sheet * {
-      font-family: "宋体", "SimSun", "NSimSun", serif;
+      font-family: "SimSun", "宋体", "NSimSun", "Songti SC", "STSong", serif;
     }
 
     .title {
@@ -515,7 +515,7 @@
       padding: 0;
     }
 
-    。cell-stack {
+    .cell-stack {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -543,11 +543,12 @@
       font-size: 10.5pt;
       line-height: 1.45;
       white-space: pre-line;
-      word-break: break-all;
-      overflow-wrap: anywhere;
+      word-break: normal;
+      overflow-wrap: break-word;
+      line-break: strict;
     }
 
-    。signature-wrap {
+    .signature-wrap {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -573,7 +574,7 @@
       height: 62px;
     }
 
-    。sheet-footnote {
+    .sheet-footnote {
       margin-top: 12px;
       text-align: right;
       color: var(--muted);
@@ -596,7 +597,7 @@
         justify-content: flex-start;
       }
 
-      。sheet-viewport {
+      .sheet-viewport {
         overflow: visible;
         padding: 12px;
       }
@@ -875,8 +876,8 @@
     "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
     "bankAgentZip": "400030",
     "bankAgentPhone": "13756563133",
-    "ownerSignLabel": "机动车所有人（代理人） 签字：",
-    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "ownerSignLabel": "机动车所有人（代理人）签字：",
+    "bankSignLabel": "抵押权人/质权人签字：中国工商银行股份有限公司重庆沙坪坝支行",
     "agentSignLabel": "代理人签字：",
     "sealPath": "assets/seals/agent-001-seal.png",
     "signaturePath": "assets/signatures/agent-002-signature.png"
@@ -2337,10 +2338,10 @@
       exportSheet.style.boxShadow = "none";
       exportSheet.style.transform = "none";
       exportSheet.style.overflow = "hidden";
-      exportSheet.style.fontFamily = '"宋体", "SimSun", "NSimSun", serif';
+      exportSheet.style.fontFamily = '"SimSun", "宋体", "NSimSun", "Songti SC", "STSong", serif';
 
       exportSheet.querySelectorAll("*").forEach((node) => {
-        node.style.fontFamily = '"宋体", "SimSun", "NSimSun", serif';
+        node.style.fontFamily = '"SimSun", "宋体", "NSimSun", "Songti SC", "STSong", serif';
       });
 
       const exportTableScroll = exportSheet.querySelector(".table-scroll");
@@ -2373,9 +2374,9 @@
               return;
             }
 
-            clonedSheet.style.fontFamily = '"宋体", "SimSun", "NSimSun", serif';
+            clonedSheet.style.fontFamily = '"SimSun", "宋体", "NSimSun", "Songti SC", "STSong", serif';
             clonedSheet.querySelectorAll("*").forEach((node) => {
-              node.style.fontFamily = '"宋体", "SimSun", "NSimSun", serif';
+              node.style.fontFamily = '"SimSun", "宋体", "NSimSun", "Songti SC", "STSong", serif';
             });
           },
         });
@@ -2429,7 +2430,7 @@
       renderRequestType(current.requestType);
 
       setImage(bankSeal, current.sealPath);
-      setImage(ownerSignature, current.signaturePath);
+      setImage(ownerSignature， current.signaturePath);
       setImage(agentSignature, current.signaturePath);
       ownerSignatureEmpty.hidden = Boolean(current.signaturePath);
       agentSignatureEmpty.hidden = Boolean(current.signaturePath);

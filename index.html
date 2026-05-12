@@ -1,0 +1,2504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>机动车抵押登记申请表</title>
+  <style>
+    :root {
+      --a4-width: 21cm;
+      --a4-height: 29.7cm;
+      --page-width: var(--a4-width);
+      --page-height: var(--a4-height);
+      --page-margin-left: 2cm;
+      --page-margin-right: 2cm;
+      --page-margin-top: 1.5cm;
+      --page-margin-bottom: 0.5cm;
+      --seal-size: 4cm;
+      --border: #000000;
+      --table-border-width: 1px;
+      --paper: #ffffff;
+      --bg: #0b1020;
+      --bg-soft: #11182a;
+      --panel-line: rgba(231, 238, 252, 0.12);
+      --panel-strong-line: rgba(231, 238, 252, 0.22);
+      --panel-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+      --accent: #7dd3fc;
+      --accent-2: #a78bfa;
+      --text-on-dark: #e7eefc;
+      --muted-on-dark: #a9b7d6;
+      --ink: #141414;
+      --muted: #5d5d5d;
+      --control: rgba(7, 12, 23, 0.72);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "宋体", "NSimSun", serif;
+      text-wrap: pretty;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 16px;
+      background:
+        radial-gradient(1200px 900px at 15% 5%, rgba(167, 139, 250, 0.22), transparent 55%),
+        radial-gradient(1200px 900px at 85% 15%, rgba(125, 211, 252, 0.18), transparent 50%),
+        radial-gradient(1000px 800px at 50% 110%, rgba(251, 113, 133, 0.08), transparent 55%),
+        linear-gradient(180deg, #0a0e16, #0b1020 70%, #070a12);
+    }
+
+    .app {
+      max-width: 1460px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    .app-topbar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 4px 2px 0;
+    }
+
+    .brand {
+      display: grid;
+      gap: 6px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      color: var(--text-on-dark);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 19px;
+      font-weight: 760;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+
+    .brand p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted-on-dark);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .status-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .status-pill {
+      padding: 7px 12px;
+      border: 1px solid var(--panel-line);
+      border-radius: 999px;
+      color: var(--text-on-dark);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(320px, 372px) minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .pane {
+      border: 1px solid var(--panel-line);
+      background:
+        radial-gradient(1200px 320px at 50% -10%, rgba(231, 238, 252, 0.07), transparent 60%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+      border-radius: 22px;
+      box-shadow: var(--panel-shadow);
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+    }
+
+    .pane-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 16px 18px 14px;
+      border-bottom: 1px solid var(--panel-line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    }
+
+    .pane-title {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .pane-title strong {
+      color: var(--text-on-dark);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .pane-title span {
+      color: var(--muted-on-dark);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .control-pane-body {
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .toolbar {
+      display: grid;
+      gap: 14px;
+    }
+
+    .control {
+      display: grid;
+      gap: 8px;
+    }
+
+    .control label {
+      color: var(--muted-on-dark);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .control select,
+    .control input {
+      width: 100%;
+      height: 46px;
+      padding: 0 14px;
+      border: 1px solid rgba(231, 238, 252, 0.14);
+      border-radius: 14px;
+      background: var(--control);
+      color: var(--text-on-dark);
+      font: inherit;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 14px;
+      outline: none;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.28);
+    }
+
+    .control select:focus,
+    .control input:focus {
+      border-color: rgba(125, 211, 252, 0.42);
+      box-shadow:
+        inset 0 0 0 1px rgba(0, 0, 0, 0.18),
+        0 0 0 3px rgba(125, 211, 252, 0.12);
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-button {
+      height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--panel-line);
+      border-radius: 14px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04)),
+        radial-gradient(900px 180px at 20% 0%, rgba(125, 211, 252, 0.16), transparent 70%),
+        radial-gradient(900px 180px at 80% 0%, rgba(167, 139, 250, 0.16), transparent 70%);
+      color: var(--text-on-dark);
+      font: inherit;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+      transition: transform 0.18s ease, border-color 0.18s ease, filter 0.18s ease;
+    }
+
+    .toolbar-button:hover {
+      transform: translateY(-1px);
+      border-color: var(--panel-strong-line);
+      filter: brightness(1.03);
+    }
+
+    .toolbar-button:active {
+      transform: translateY(0);
+      filter: brightness(0.98);
+    }
+
+    .toolbar-button.secondary {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+      box-shadow: none;
+    }
+
+    .toolbar-button[disabled] {
+      cursor: wait;
+      opacity: 0.65;
+    }
+
+    .helper-card {
+      display: grid;
+      gap: 10px;
+      padding: 14px 14px 16px;
+      border: 1px dashed rgba(231, 238, 252, 0.16);
+      border-radius: 16px;
+      background: rgba(8, 12, 21, 0.32);
+    }
+
+    .helper-card strong {
+      color: var(--text-on-dark);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.03em;
+    }
+
+    .helper-card p {
+      margin: 0;
+      color: var(--muted-on-dark);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .preview-pane {
+      min-width: 0;
+    }
+
+    .preview-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .preview-badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--panel-line);
+      color: var(--muted-on-dark);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .sheet-viewport {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow: visible;
+      padding: 18px;
+      background:
+        radial-gradient(900px 500px at 70% 10%, rgba(255, 255, 255, 0.06), transparent 55%),
+        linear-gradient(180deg, rgba(12, 15, 20, 0.42), rgba(12, 15, 20, 0.18));
+    }
+
+    .sheet-scale {
+      transform-origin: top center;
+      will-change: transform;
+    }
+
+    .sheet {
+      width: var(--page-width);
+      min-height: var(--page-height);
+      margin: 0;
+      padding-top: var(--page-margin-top);
+      padding-right: var(--page-margin-right);
+      padding-bottom: var(--page-margin-bottom);
+      padding-left: var(--page-margin-left);
+      background: var(--paper);
+      box-shadow: 0 26px 60px rgba(31, 31, 31, 0.12);
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .sheet,
+    .sheet * {
+      font-family: "宋体", "SimSun", "NSimSun", serif;
+    }
+
+    .title {
+      margin: 0 0 0.34cm;
+      text-align: center;
+      font-size: 22pt;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .form-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      background: #fff;
+      border: var(--table-border-width) solid var(--border);
+    }
+
+    .form-table td {
+      border: var(--table-border-width) solid var(--border);
+      padding: 8px 8px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 10.5pt;
+      line-height: 1.35;
+      word-break: keep-all;
+    }
+
+    .form-table .label {
+      font-weight: 700;
+    }
+
+    .form-table .compact {
+      padding: 6px 8px;
+    }
+
+    .form-table .owner-name-cell {
+      height: 110px;
+      font-size: 10.5pt;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    .request-cell {
+      padding: 8px 4px;
+      font-size: 10.5pt;
+      font-weight: 700;
+      letter-spacing: 0;
+      white-space: nowrap;
+      font-family: "宋体", "SimSun", "NSimSun", serif;
+    }
+
+    .request-options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      width: 100%;
+      white-space: nowrap;
+    }
+
+    .request-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      line-height: 1;
+      font-weight: 700;
+      flex: 0 1 auto;
+    }
+
+    .request-checkbox {
+      position: relative;
+      width: 0.3cm;
+      height: 0.3cm;
+      border: 1.8px solid #000;
+      background: #fff;
+      flex: 0 0 auto;
+    }
+
+    .request-checkbox.checked::after {
+      content: "";
+      position: absolute;
+      left: 0.10cm;
+      top: -0.01cm;
+      width: 0.05cm;
+      height: 0.2cm;
+      border-right: 1.5px solid #000;
+      border-bottom: 1.5px solid #000;
+      transform: rotate(50deg);
+    }
+
+    .vertical-label {
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      letter-spacing: 0.18em;
+      font-weight: 700;
+      font-size: 10.5pt;
+      padding: 10px 2px;
+    }
+
+    .name-cell {
+      position: relative;
+      min-height: 52px;
+      font-size: 10.5pt;
+      overflow: hidden;
+    }
+
+    .agent-name {
+      font-size: 10.5pt;
+      font-weight: 400;
+    }
+
+    .bank-name {
+      font-weight: 600;
+      padding-block: 12px;
+    }
+
+    .seal-cell {
+      overflow: visible;
+      z-index: 2;
+    }
+
+    .seal-cell .seal-image {
+      position: absolute;
+      left: 95%;
+      top: 58%;
+      width: var(--seal-size);
+      height: var(--seal-size);
+      max-width: none;
+      transform: translate(-50%, -50%);
+      opacity: 0.92;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      z-index: 4;
+    }
+
+    .seal-cell .seal-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .address-cell {
+      font-size: 10.5pt;
+      font-weight: 600;
+      line-height: 1.2;
+      word-break: break-all;
+      overflow-wrap: anywhere;
+      white-space: normal;
+      padding-inline: 12px;
+    }
+
+    .sign-box {
+      min-height: 188px;
+      padding: 0;
+    }
+
+    .bank-sign-box {
+      min-height: 100px;
+    }
+
+    .note-box {
+      min-height: 158px;
+      padding: 0;
+    }
+
+    .cell-stack {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: stretch;
+      height: 100%;
+      min-height: inherit;
+      padding: 10px 8px 12px;
+    }
+
+    .note-box .cell-stack {
+      justify-content: center;
+      align-items: center;
+      font-size: 12pt;
+      font-weight: 700;
+      line-height: 1.28;
+      gap: 6px;
+      text-align: center;
+      padding: 8px 12px;
+    }
+
+    .sign-label {
+      text-align: left;
+      font-weight: 700;
+      font-size: 10.5pt;
+      line-height: 1.45;
+      white-space: pre-line;
+      word-break: break-all;
+      overflow-wrap: anywhere;
+    }
+
+    .signature-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 72px;
+    }
+
+    .signature-image {
+      width: min(2cm, 100%);
+      max-width: 1.8cm;
+      height: auto;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    .sign-date {
+      text-align: center;
+      font-size: 10.5pt;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .empty-signature {
+      height: 62px;
+    }
+
+    .sheet-footnote {
+      margin-top: 12px;
+      text-align: right;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 14px;
+      }
+
+      .app-topbar,
+      .workspace {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .status-pills,
+      .preview-meta {
+        justify-content: flex-start;
+      }
+
+      .sheet-viewport {
+        overflow: visible;
+        padding: 12px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+
+      .app-topbar,
+      .control-pane,
+      .sheet-footnote {
+        display: none;
+      }
+
+      .app,
+      .workspace,
+      .preview-pane,
+      .pane {
+        display: block;
+        max-width: none;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .pane-header {
+        display: none;
+      }
+
+      .sheet-scale {
+        transform: none !important;
+      }
+
+      .sheet-viewport {
+        height: auto !important;
+      }
+
+      .sheet {
+        width: var(--page-width);
+        box-shadow: none;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="app-topbar">
+      <div class="brand">
+        <h1>申请表工作台</h1>
+        <p>沿用纸质申请表版式，左侧录入代理人与客户信息，右侧保持 A4 预览视图，适合直接检查签字、印章与导出效果。</p>
+      </div>
+      <div class="status-pills">
+        <span class="status-pill">A4 预览</span>
+        <span class="status-pill">自动日期</span>
+        <span class="status-pill">直接导出 PDF</span>
+      </div>
+    </div>
+
+    <div class="workspace">
+      <div class="pane control-pane">
+        <div class="pane-header">
+          <div class="pane-title">
+            <strong>表单控制</strong>
+            <span>切换代理人、填写客户姓名，并控制当前导出内容。</span>
+          </div>
+        </div>
+        <div class="control-pane-body">
+          <div class="toolbar">
+            <div class="control">
+              <label for="agentSelect">选择代理人</label>
+              <select id="agentSelect"></select>
+            </div>
+            <div class="control">
+              <label for="customerName">客户姓名</label>
+              <input id="customerName" type="text" placeholder="输入后自动填入“机动车所有人 姓名/名称”">
+            </div>
+            <div class="toolbar-actions">
+              <button class="toolbar-button secondary" id="printButton" type="button">打印</button>
+              <button class="toolbar-button" id="pdfButton" type="button">下载 PDF</button>
+            </div>
+          </div>
+          <div class="helper-card">
+            <strong>使用说明</strong>
+            <p>预览区保持白纸版式，外层界面仅用于录入和检查，不会改变表格中的字号、边框和签章位置。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pane preview-pane">
+        <div class="pane-header">
+          <div class="pane-title">
+            <strong>申请表预览</strong>
+            <span>预览区与导出区保持同一张 A4 纸面，便于直接核对版式。</span>
+          </div>
+          <div class="preview-meta">
+            <span class="preview-badge">白底纸面</span>
+            <span class="preview-badge">自动缩放</span>
+            <span class="preview-badge">签章检查</span>
+          </div>
+        </div>
+        <div class="sheet-viewport">
+          <div class="sheet-scale">
+            <div class="sheet">
+          <h1 class="title">机动车抵押登记 / 质押备案申请表</h1>
+          <div class="table-scroll">
+            <table class="form-table">
+          <colgroup>
+            <col style="width: 5.53%">
+            <col style="width: 12.83%">
+            <col style="width: 21.07%">
+            <col style="width: 15.78%">
+            <col style="width: 0.98%">
+            <col style="width: 3.69%">
+            <col style="width: 13.83%">
+            <col style="width: 26.29%">
+          </colgroup>
+          <tbody>
+            <tr>
+              <td class="label compact" colspan="2">号牌种类</td>
+              <td class="compact" colspan="4" id="vehicleType"></td>
+              <td class="label compact">号牌号码</td>
+              <td class="compact" id="plateNumber"></td>
+            </tr>
+            <tr>
+              <td class="label" colspan="2">申请事项</td>
+              <td class="request-cell" colspan="5" id="requestType"></td>
+              <td class="note-box" rowspan="2">
+                <div class="cell-stack">
+                  <div>申请人对申请资料</div>
+                  <div>的真实有效性负责。</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="label" colspan="2">机动车所有人<br>姓名/名称</td>
+              <td class="owner-name-cell" colspan="5" id="customerNameDisplay">&nbsp;</td>
+            </tr>
+
+            <tr>
+              <td class="vertical-label" rowspan="3">机动车所有人的代理人</td>
+              <td class="label">姓名/名称</td>
+              <td class="name-cell agent-name" colspan="5" id="ownerAgentName"></td>
+              <td class="sign-box" rowspan="3">
+                <div class="cell-stack">
+                  <div class="sign-label" id="ownerSignLabel"></div>
+                  <div class="signature-wrap">
+                    <img class="signature-image" id="ownerSignature" alt="代理人签字">
+                    <div class="empty-signature" id="ownerSignatureEmpty" hidden></div>
+                  </div>
+                  <div class="sign-date" id="ownerSignDate"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="label">邮寄地址</td>
+              <td class="address-cell" colspan="5" id="ownerAgentAddress"></td>
+            </tr>
+            <tr>
+              <td class="label">邮政编码</td>
+              <td id="ownerAgentZip"></td>
+              <td class="label" colspan="2">联系电话</td>
+              <td colspan="2" id="ownerAgentPhone"></td>
+            </tr>
+
+            <tr>
+              <td class="vertical-label" rowspan="3">抵押权人/质权人</td>
+              <td class="label">姓名/名称</td>
+              <td class="name-cell bank-name seal-cell" colspan="5">
+                <img class="seal-image" id="bankSeal" alt="印章">
+                <div class="seal-text" id="bankName"></div>
+              </td>
+              <td class="note-box" rowspan="2">
+                <div class="cell-stack">
+                  <div>申请人对申请资料</div>
+                  <div>的真实有效性负责。</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="label">邮寄地址</td>
+              <td class="address-cell" colspan="5" id="bankAddress"></td>
+            </tr>
+            <tr>
+              <td class="label">邮政编码</td>
+              <td id="bankZip"></td>
+              <td class="label" colspan="2">联系电话</td>
+              <td colspan="2" id="bankPhone"></td>
+              <td class="sign-box bank-sign-box">
+                <div class="cell-stack">
+                  <div class="sign-label" id="bankSignLabel"></div>
+                  <div class="sign-date" id="bankSignDate"></div>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="vertical-label" rowspan="3">抵押权人/质权人的代理人</td>
+              <td class="label">姓名/名称</td>
+              <td class="name-cell agent-name" colspan="5" id="bankAgentName"></td>
+              <td class="sign-box" rowspan="3">
+                <div class="cell-stack">
+                  <div class="sign-label" id="agentSignLabel"></div>
+                  <div class="signature-wrap">
+                    <img class="signature-image" id="agentSignature" alt="代理人签字">
+                    <div class="empty-signature" id="agentSignatureEmpty" hidden></div>
+                  </div>
+                  <div class="sign-date" id="agentSignDate"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="label">邮寄地址</td>
+              <td class="address-cell" colspan="5" id="bankAgentAddress"></td>
+            </tr>
+            <tr>
+              <td class="label">邮政编码</td>
+              <td id="bankAgentZip"></td>
+              <td class="label" colspan="2">联系电话</td>
+              <td colspan="2" id="bankAgentPhone"></td>
+            </tr>
+          </tbody>
+            </table>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/vendor/html2canvas.min.js?v=20260512d"></script>
+  <script src="assets/vendor/jspdf.umd.min.js?v=20260512d"></script>
+  <script>
+    const agentsData = [
+  {
+    "agent": "于冲",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "于冲",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "19833965050",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "于冲",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-001-seal.png",
+    "signaturePath": "assets/signatures/agent-001-signature.png"
+  },
+  {
+    "agent": "付岩",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "付岩",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13756563133",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "13756563133",
+    "bankAgentName": "付岩",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "13756563133",
+    "ownerSignLabel": "机动车所有人（代理人）签字：",
+    "bankSignLabel": "抵押权人/质权人签字：中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-002-seal.png",
+    "signaturePath": "assets/signatures/agent-002-signature.png"
+  },
+  {
+    "agent": "关聪",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "关聪",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15648222262",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "关聪",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-003-seal.png",
+    "signaturePath": "assets/signatures/agent-003-signature.png"
+  },
+  {
+    "agent": "刘华伟",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "刘华伟",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "刘华伟",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/common-seal.png",
+    "signaturePath": "assets/signatures/agent-004-signature.png"
+  },
+  {
+    "agent": "刘婷婷",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "刘婷婷",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "18347053606",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "刘婷婷",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-005-seal.png",
+    "signaturePath": "assets/signatures/agent-005-signature.png"
+  },
+  {
+    "agent": "刘晨",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "刘晨",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15822134493",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "刘晨",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-006-seal.png",
+    "signaturePath": "assets/signatures/agent-006-signature.png"
+  },
+  {
+    "agent": "华金凤",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "华金凤",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13304959607",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "华金凤",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-007-seal.png",
+    "signaturePath": "assets/signatures/agent-007-signature.png"
+  },
+  {
+    "agent": "卢欢",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "卢欢",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "18642706801",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "卢欢",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-008-seal.png",
+    "signaturePath": "assets/signatures/agent-008-signature.png"
+  },
+  {
+    "agent": "同峥蓉",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "同峥蓉",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "17733500003",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "同峥蓉",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-009-seal.png",
+    "signaturePath": "assets/signatures/agent-009-signature.png"
+  },
+  {
+    "agent": "吴波",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "吴波",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15184065959",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "吴波",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-010-seal.png",
+    "signaturePath": "assets/signatures/agent-010-signature.png"
+  },
+  {
+    "agent": "姜丽丽",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "姜丽丽",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "18004331555",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "姜丽丽",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-011-seal.png",
+    "signaturePath": "assets/signatures/agent-011-signature.png"
+  },
+  {
+    "agent": "孙立妙",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "孙立妙",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15830138644",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "孙立妙",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-012-seal.png",
+    "signaturePath": "assets/signatures/agent-012-signature.png"
+  },
+  {
+    "agent": "孟庆丰",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "孟庆丰",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13845552023",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "孟庆丰",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人）签字：2026 年 月 日",
+    "bankSignLabel": "抵押权人/质权人签字：中国工商银行股份有限公司重庆沙坪坝支行2026 年 月 日",
+    "agentSignLabel": "代理人签字：2026 年 月 日",
+    "sealPath": "assets/seals/agent-013-seal.png",
+    "signaturePath": "assets/signatures/agent-013-signature.png"
+  },
+  {
+    "agent": "师棋梅",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "师棋梅",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15830068985",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "师棋梅",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-014-seal.png",
+    "signaturePath": "assets/signatures/agent-014-signature.png"
+  },
+  {
+    "agent": "张家赫",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "张家赫",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13039115666",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "张家赫",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-015-seal.png",
+    "signaturePath": "assets/signatures/agent-015-signature.png"
+  },
+  {
+    "agent": "张慧美",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "张慧美",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "18031477707",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "张慧美",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-016-seal.png",
+    "signaturePath": "assets/signatures/agent-016-signature.png"
+  },
+  {
+    "agent": "张木子",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "张木子",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13944466671",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "张木子",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-017-seal.png",
+    "signaturePath": "assets/signatures/agent-017-signature.png"
+  },
+  {
+    "agent": "张雨茄",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "张雨茄",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15047529992",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "张雨茄",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-018-seal.png",
+    "signaturePath": "assets/signatures/agent-018-signature.png"
+  },
+  {
+    "agent": "彭晶晶",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "彭晶晶",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "18232409998",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "彭晶晶",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-019-seal.png",
+    "signaturePath": "assets/signatures/agent-019-signature.png"
+  },
+  {
+    "agent": "徐铭鸿",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "徐铭鸿",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13694305223",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "徐铭鸿",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-020-seal.png",
+    "signaturePath": "assets/signatures/agent-020-signature.png"
+  },
+  {
+    "agent": "朱赫",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "朱赫",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15040580686",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "朱赫",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "15040580686",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-021-seal.png",
+    "signaturePath": "assets/signatures/agent-021-signature.png"
+  },
+  {
+    "agent": "李傲梅",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "李傲梅",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15841279577",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "李傲梅",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-022-seal.png",
+    "signaturePath": "assets/signatures/agent-022-signature.png"
+  },
+  {
+    "agent": "李宝峰",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "李宝峰",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13591244699",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "李宝峰",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-023-seal.png",
+    "signaturePath": "assets/signatures/agent-023-signature.png"
+  },
+  {
+    "agent": "李颖",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "李颖",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13941994195",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "李颖",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-024-seal.png",
+    "signaturePath": "assets/signatures/agent-024-signature.png"
+  },
+  {
+    "agent": "杨光",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "杨光",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "18245494777",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "杨光",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-025-seal.png",
+    "signaturePath": "assets/signatures/agent-025-signature.png"
+  },
+  {
+    "agent": "杨海洋",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "杨海洋",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15831883913",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "杨海洋",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-026-seal.png",
+    "signaturePath": "assets/signatures/agent-026-signature.png"
+  },
+  {
+    "agent": "柳华伟",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "柳华伟",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15948760666",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "柳华伟",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-027-seal.png",
+    "signaturePath": "assets/signatures/agent-027-signature.png"
+  },
+  {
+    "agent": "王万亮",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "王万亮",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15643603999",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "王万亮",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-028-seal.png",
+    "signaturePath": "assets/signatures/agent-028-signature.png"
+  },
+  {
+    "agent": "王丽华",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "王丽华",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13472998588",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "王丽华",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-029-seal.png",
+    "signaturePath": "assets/signatures/agent-029-signature.png"
+  },
+  {
+    "agent": "王倩",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "王倩",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13840393905",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "王倩",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-030-seal.png",
+    "signaturePath": "assets/signatures/agent-030-signature.png"
+  },
+  {
+    "agent": "王占刚",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "王占刚",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13504173330",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "王占刚",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-031-seal.png",
+    "signaturePath": "assets/signatures/agent-031-signature.png"
+  },
+  {
+    "agent": "王强",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "王强",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13756755333",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "王强",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-032-seal.png",
+    "signaturePath": "assets/signatures/agent-032-signature.png"
+  },
+  {
+    "agent": "王志莹",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "王志莹",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13184998903",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "王志莹",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-033-seal.png",
+    "signaturePath": "assets/signatures/agent-033-signature.png"
+  },
+  {
+    "agent": "王海燕",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "王海燕",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13863302357",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "王海燕",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-034-seal.png",
+    "signaturePath": "assets/signatures/agent-034-signature.png"
+  },
+  {
+    "agent": "王猛",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "王猛",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15845635205",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "王猛",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-035-seal.png",
+    "signaturePath": "assets/signatures/agent-035-signature.png"
+  },
+  {
+    "agent": "王金生",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "王金生",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13810690160",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "王金生",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：2",
+    "sealPath": "assets/seals/agent-036-seal.png",
+    "signaturePath": "assets/signatures/agent-036-signature.png"
+  },
+  {
+    "agent": "罗洪艳",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "罗洪艳",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13180765777",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "罗洪艳",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-037-seal.png",
+    "signaturePath": "assets/signatures/agent-037-signature.png"
+  },
+  {
+    "agent": "赵旭光",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "赵旭光",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "17128143333",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "赵旭光",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-038-seal.png",
+    "signaturePath": "assets/signatures/agent-038-signature.png"
+  },
+  {
+    "agent": "邢亮",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "邢亮",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13943832220",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "邢亮",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-039-seal.png",
+    "signaturePath": "assets/signatures/agent-039-signature.png"
+  },
+  {
+    "agent": "陈亚君",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "陈亚君",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13898211911",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "陈亚君",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-040-seal.png",
+    "signaturePath": "assets/signatures/agent-040-signature.png"
+  },
+  {
+    "agent": "陈宣佐",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "陈宣佐",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15568337676",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "陈宣佐",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-041-seal.png",
+    "signaturePath": "assets/signatures/agent-041-signature.png"
+  },
+  {
+    "agent": "陈秋阳",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "陈秋阳",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15636363288",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "陈秋阳",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-042-seal.png",
+    "signaturePath": "assets/signatures/agent-042-signature.png"
+  },
+  {
+    "agent": "陈雷",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "陈雷",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15241781219",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "陈雷",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-043-seal.png",
+    "signaturePath": "assets/signatures/agent-043-signature.png"
+  },
+  {
+    "agent": "韩宝峰",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "韩宝峰",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "18920939758",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "韩宝峰",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-044-seal.png",
+    "signaturePath": "assets/signatures/agent-044-signature.png"
+  },
+  {
+    "agent": "韩明",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "韩明",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501恒泰汽车办公室",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "18031477707",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501恒泰汽车办公室",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "韩明",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501恒泰汽车办公室",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：2026 年 月 日",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行 2026 年 月 日",
+    "agentSignLabel": "代理人签字：2026 年 月 日",
+    "sealPath": "assets/seals/agent-045-seal.png",
+    "signaturePath": "assets/signatures/agent-045-signature.png"
+  },
+  {
+    "agent": "马延宾",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "马延宾",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "18902179953",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "马延宾",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-046-seal.png",
+    "signaturePath": "assets/signatures/agent-046-signature.png"
+  },
+  {
+    "agent": "高红梅",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "高红梅",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15831577899",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "高红梅",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-047-seal.png",
+    "signaturePath": "assets/signatures/agent-047-signature.png"
+  },
+  {
+    "agent": "唐明旭",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "唐明旭",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "17614129668",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "唐明旭",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-048-seal.png",
+    "signaturePath": "assets/signatures/agent-048-signature.png"
+  },
+  {
+    "agent": "姜连臣",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "姜连臣",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13661364490",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "姜连臣",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-049-seal.png",
+    "signaturePath": "assets/signatures/agent-049-signature.png"
+  },
+  {
+    "agent": "孙诗洋",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "孙诗洋",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15241769990",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "孙诗洋",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-050-seal.png",
+    "signaturePath": "assets/signatures/agent-050-signature.png"
+  },
+  {
+    "agent": "李跃鹏",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "李跃鹏",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15765562262",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "李跃鹏",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-051-seal.png",
+    "signaturePath": "assets/signatures/agent-051-signature.png"
+  },
+  {
+    "agent": "王丽欣",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "王丽欣",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "13844638676",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "王丽欣",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-052-seal.png",
+    "signaturePath": "assets/signatures/agent-052-signature.png"
+  },
+  {
+    "agent": "蔺滢",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "蔺滢",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "18241661555",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "蔺滢",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-053-seal.png",
+    "signaturePath": "assets/signatures/agent-053-signature.png"
+  },
+  {
+    "agent": "靳嘉洺",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "靳嘉洺",
+    "ownerAgentAddress": "重庆市沙坪坝区渝碚路66号华夏银座21-1恒泰汽车办公室",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "19568261336",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市沙坪坝区渝碚路66号华夏银座21-1恒泰汽车办公室",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "靳嘉洺",
+    "bankAgentAddress": "重庆市沙坪坝区渝碚路66号华夏银座21-1恒泰汽车办公室",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-054-seal.png",
+    "signaturePath": "assets/signatures/agent-054-signature.png"
+  },
+  {
+    "agent": "韩赛赛",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "韩赛赛",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "15633707331",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "韩赛赛",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-055-seal.png",
+    "signaturePath": "assets/signatures/agent-055-signature.png"
+  },
+  {
+    "agent": "马骏",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "马骏",
+    "ownerAgentAddress": "重庆市沙坪坝区渝碚路66号华夏银座21-1恒泰汽车办公室",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "17790003635",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市沙坪坝区渝碚路66号华夏银座21-1恒泰汽车办公室",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "马骏",
+    "bankAgentAddress": "重庆市沙坪坝区渝碚路66号华夏银座21-1恒泰汽车办公室",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-056-seal.png",
+    "signaturePath": "assets/signatures/agent-056-signature.png"
+  },
+  {
+    "agent": "魏传晖",
+    "vehicleType": "小型汽车",
+    "plateNumber": "/",
+    "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
+    "ownerAgentName": "魏传晖",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "ownerAgentZip": "400030",
+    "ownerAgentPhone": "18635135329",
+    "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankZip": "400030",
+    "bankPhone": "18620401162",
+    "bankAgentName": "魏传晖",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
+    "bankAgentZip": "400030",
+    "bankAgentPhone": "18620401162",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
+    "bankSignLabel": "抵押权人/质权人签字： 中国工商银行股份有限公司重庆沙坪坝支行",
+    "agentSignLabel": "代理人签字：",
+    "sealPath": "assets/seals/agent-057-seal.png",
+    "signaturePath": "assets/signatures/agent-057-signature.png"
+  }
+];
+
+    const agentSelect = document.getElementById("agentSelect");
+    const customerNameInput = document.getElementById("customerName");
+    const printButton = document.getElementById("printButton");
+    const pdfButton = document.getElementById("pdfButton");
+    const sheetViewport = document.querySelector(".sheet-viewport");
+    const sheetScale = document.querySelector(".sheet-scale");
+    const sheet = document.querySelector(".sheet");
+    const A4_WIDTH_PX = (210 * 96) / 25.4;
+    const A4_HEIGHT_PX = (297 * 96) / 25.4;
+
+    const textBindings = {
+      vehicleType: document.getElementById("vehicleType"),
+      plateNumber: document.getElementById("plateNumber"),
+      requestType: document.getElementById("requestType"),
+      ownerAgentName: document.getElementById("ownerAgentName"),
+      ownerAgentAddress: document.getElementById("ownerAgentAddress"),
+      ownerAgentZip: document.getElementById("ownerAgentZip"),
+      ownerAgentPhone: document.getElementById("ownerAgentPhone"),
+      bankName: document.getElementById("bankName"),
+      bankAddress: document.getElementById("bankAddress"),
+      bankZip: document.getElementById("bankZip"),
+      bankPhone: document.getElementById("bankPhone"),
+      bankAgentName: document.getElementById("bankAgentName"),
+      bankAgentAddress: document.getElementById("bankAgentAddress"),
+      bankAgentZip: document.getElementById("bankAgentZip"),
+      bankAgentPhone: document.getElementById("bankAgentPhone"),
+      ownerSignLabel: document.getElementById("ownerSignLabel"),
+      bankSignLabel: document.getElementById("bankSignLabel"),
+      agentSignLabel: document.getElementById("agentSignLabel"),
+    };
+
+    const customerNameDisplay = document.getElementById("customerNameDisplay");
+    const ownerSignature = document.getElementById("ownerSignature");
+    const ownerSignatureEmpty = document.getElementById("ownerSignatureEmpty");
+    const agentSignature = document.getElementById("agentSignature");
+    const agentSignatureEmpty = document.getElementById("agentSignatureEmpty");
+    const bankSeal = document.getElementById("bankSeal");
+    const ownerSignDate = document.getElementById("ownerSignDate");
+    const bankSignDate = document.getElementById("bankSignDate");
+    const agentSignDate = document.getElementById("agentSignDate");
+
+    function todayText() {
+      const now = new Date();
+      return `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+    }
+
+    function fillCustomerName() {
+      const value = customerNameInput.value.trim();
+      customerNameDisplay.textContent = value || "\u00A0";
+    }
+
+    function pdfFileName() {
+      const customerName = customerNameInput.value.trim() || "客户";
+      return `申请表-${customerName}.pdf`;
+    }
+
+    function waitForImages(root) {
+      const images = Array.from(root.querySelectorAll("img")).filter((img) => {
+        return !img.hidden && img.getAttribute("src");
+      });
+
+      return Promise.all(
+        images.map((img) => {
+          if (img.complete) {
+            return Promise.resolve();
+          }
+
+          return new Promise((resolve) => {
+            img.addEventListener("load", resolve, { once: true });
+            img.addEventListener("error", resolve, { once: true });
+          });
+        })
+      );
+    }
+
+    function downsampleCanvas(sourceCanvas, ratio) {
+      if (ratio >= 0.999) {
+        return sourceCanvas;
+      }
+
+      const targetCanvas = document.createElement("canvas");
+      targetCanvas.width = Math.max(1, Math.round(sourceCanvas.width * ratio));
+      targetCanvas.height = Math.max(1, Math.round(sourceCanvas.height * ratio));
+
+      const context = targetCanvas.getContext("2d", { alpha: false });
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = "high";
+      context.fillStyle = "#ffffff";
+      context.fillRect(0, 0, targetCanvas.width, targetCanvas.height);
+      context.drawImage(sourceCanvas, 0, 0, targetCanvas.width, targetCanvas.height);
+      return targetCanvas;
+    }
+
+    function buildPdfBlobFromCanvas(sourceCanvas, ratio, quality) {
+      const workingCanvas = downsampleCanvas(sourceCanvas, ratio);
+      const imageData = workingCanvas.toDataURL("image/jpeg", quality);
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4",
+        compress: true,
+      });
+
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      pdf.addImage(imageData, "JPEG", 0, 0, pageWidth, pageHeight, undefined, "MEDIUM");
+      return pdf.output("blob");
+    }
+
+    function renderRequestType(value) {
+      const container = textBindings.requestType;
+      container.textContent = "";
+
+      const options = String(value || "")
+        .trim()
+        .split(/\s+(?=[☑□])/)
+        .filter(Boolean);
+
+      if (!options.length) {
+        container.textContent = value || "";
+        return;
+      }
+
+      const list = document.createElement("div");
+      list.className = "request-options";
+
+      options.forEach((option) => {
+        const checked = option.startsWith("☑");
+        const labelText = option.slice(1).trim();
+        const item = document.createElement("span");
+        item.className = "request-option";
+
+        const box = document.createElement("span");
+        box.className = `request-checkbox${checked ? " checked" : ""}`;
+
+        const label = document.createElement("span");
+        label.textContent = labelText;
+
+        item.append(box, label);
+        list.appendChild(item);
+      });
+
+      container.appendChild(list);
+    }
+
+    function updatePreviewScale() {
+      const availableWidth = sheetViewport.clientWidth;
+      const scale = availableWidth > 0 ? Math.min(1, availableWidth / A4_WIDTH_PX) : 1;
+      sheetScale.style.transform = `scale(${scale})`;
+      sheetViewport.style.height = `${A4_HEIGHT_PX * scale}px`;
+    }
+
+    async function exportSheetToPdf(filename) {
+      if (typeof html2canvas !== "function" || !window.jspdf || !window.jspdf.jsPDF) {
+        throw new Error("PDF 导出库未加载");
+      }
+
+      const PDF_MAX_BYTES = 500 * 1024;
+      const compressionAttempts = [
+        { ratio: 1, quality: 0.82 },
+        { ratio: 0.92, quality: 0.76 },
+        { ratio: 0.86, quality: 0.7 },
+        { ratio: 0.8, quality: 0.64 },
+        { ratio: 0.74, quality: 0.58 },
+        { ratio: 0.68, quality: 0.52 },
+        { ratio: 0.62, quality: 0.46 },
+        { ratio: 0.56, quality: 0.4 },
+        { ratio: 0.5, quality: 0.34 },
+      ];
+
+      const host = document.createElement("div");
+      host.style.position = "fixed";
+      host.style.left = "-100000px";
+      host.style.top = "0";
+      host.style.width = `${A4_WIDTH_PX}px`;
+      host.style.height = `${A4_HEIGHT_PX}px`;
+      host.style.background = "#ffffff";
+      host.style.pointerEvents = "none";
+      host.style.opacity = "1";
+      host.style.overflow = "hidden";
+
+      const exportSheet = sheet.cloneNode(true);
+      exportSheet.style.width = `${A4_WIDTH_PX}px`;
+      exportSheet.style.minHeight = `${A4_HEIGHT_PX}px`;
+      exportSheet.style.margin = "0";
+      exportSheet.style.boxShadow = "none";
+      exportSheet.style.transform = "none";
+      exportSheet.style.overflow = "hidden";
+      exportSheet.style.fontFamily = '"宋体", "SimSun", "NSimSun", serif';
+
+      exportSheet.querySelectorAll("*").forEach((node) => {
+        node.style.fontFamily = '"宋体", "SimSun", "NSimSun", serif';
+      });
+
+      const exportTableScroll = exportSheet.querySelector(".table-scroll");
+      if (exportTableScroll) {
+        exportTableScroll.style.minWidth = "0";
+        exportTableScroll.style.overflow = "visible";
+      }
+
+      host.appendChild(exportSheet);
+      document.body.appendChild(host);
+
+      try {
+        if (document.fonts?.ready) {
+          await document.fonts.ready;
+        }
+        await waitForImages(exportSheet);
+
+        const canvas = await html2canvas(exportSheet, {
+          scale: 3,
+          useCORS: true,
+          backgroundColor: "#ffffff",
+          width: A4_WIDTH_PX,
+          height: A4_HEIGHT_PX,
+          windowWidth: Math.ceil(A4_WIDTH_PX),
+          windowHeight: Math.ceil(A4_HEIGHT_PX),
+          logging: false,
+          onclone: (clonedDoc) => {
+            const clonedSheet = clonedDoc.querySelector(".sheet");
+            if (!clonedSheet) {
+              return;
+            }
+
+            clonedSheet.style.fontFamily = '"宋体", "SimSun", "NSimSun", serif';
+            clonedSheet.querySelectorAll("*").forEach((node) => {
+              node.style.fontFamily = '"宋体", "SimSun", "NSimSun", serif';
+            });
+          },
+        });
+
+        let pdfBlob = null;
+        for (const attempt of compressionAttempts) {
+          pdfBlob = buildPdfBlobFromCanvas(canvas, attempt.ratio, attempt.quality);
+          if (pdfBlob.size <= PDF_MAX_BYTES) {
+            break;
+          }
+        }
+
+        if (!pdfBlob) {
+          throw new Error("PDF 生成失败");
+        }
+
+        if (pdfBlob.size > PDF_MAX_BYTES) {
+          throw new Error("PDF 压缩后仍超过 500KB");
+        }
+
+        const downloadUrl = URL.createObjectURL(pdfBlob);
+        const link = document.createElement("a");
+        link.href = downloadUrl;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 8000);
+      } finally {
+        host.remove();
+      }
+    }
+
+    function setImage(img, path) {
+      if (path) {
+        img.hidden = false;
+        img.src = encodeURI(path);
+      } else {
+        img.hidden = true;
+        img.removeAttribute("src");
+      }
+    }
+
+    function render(agentName) {
+      const current = agentsData.find((item) => item.agent === agentName) || agentsData[0];
+      Object.entries(textBindings).forEach(([key, node]) => {
+        if (key !== "requestType") {
+          node.textContent = current[key] || "";
+        }
+      });
+      renderRequestType(current.requestType);
+
+      setImage(bankSeal, current.sealPath);
+      setImage(ownerSignature, current.signaturePath);
+      setImage(agentSignature, current.signaturePath);
+      ownerSignatureEmpty.hidden = Boolean(current.signaturePath);
+      agentSignatureEmpty.hidden = Boolean(current.signaturePath);
+
+      const dateText = todayText();
+      ownerSignDate.textContent = dateText;
+      bankSignDate.textContent = dateText;
+      agentSignDate.textContent = dateText;
+      fillCustomerName();
+    }
+
+    function stepAgentSelection(direction) {
+      const options = Array.from(agentSelect.options);
+      const currentIndex = options.findIndex((option) => option.value === agentSelect.value);
+      if (currentIndex < 0) {
+        return;
+      }
+
+      const nextIndex = Math.min(options.length - 1, Math.max(0, currentIndex + direction));
+      if (nextIndex === currentIndex) {
+        return;
+      }
+
+      agentSelect.value = options[nextIndex].value;
+      render(agentSelect.value);
+    }
+
+    agentsData.forEach((item) => {
+      const option = document.createElement("option");
+      option.value = item.agent;
+      option.textContent = item.agent;
+      agentSelect.appendChild(option);
+    });
+
+    const preferredAgent = agentsData.find((item) => item.agent === "陈雷");
+    agentSelect.value = preferredAgent ? preferredAgent.agent : agentsData[0].agent;
+
+    agentSelect.addEventListener("change", () => render(agentSelect.value));
+    agentSelect.addEventListener(
+      "wheel",
+      (event) => {
+        event.preventDefault();
+        stepAgentSelection(event.deltaY > 0 ? 1 : -1);
+      },
+      { passive: false }
+    );
+    customerNameInput.addEventListener("input", fillCustomerName);
+    window.addEventListener("resize", updatePreviewScale);
+    printButton.addEventListener("click", () => window.print());
+    pdfButton.addEventListener("click", async () => {
+      const previousText = pdfButton.textContent;
+      pdfButton.disabled = true;
+      pdfButton.textContent = "生成中...";
+      try {
+        const filename = pdfFileName();
+        await exportSheetToPdf(filename);
+        pdfButton.textContent = "已开始下载";
+        setTimeout(() => {
+          pdfButton.textContent = previousText;
+        }, 1200);
+        return;
+      } catch (error) {
+        console.error(error);
+        window.alert("直接转换 PDF 失败，请刷新页面后重试。");
+      } finally {
+        pdfButton.disabled = false;
+        if (pdfButton.textContent === "生成中...") {
+          pdfButton.textContent = previousText;
+        }
+      }
+    });
+
+    render(agentSelect.value);
+    updatePreviewScale();
+  </script>
+</body>
+</html>

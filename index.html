@@ -6,17 +6,9 @@
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <link rel="preload" href="assets/Font/simsun.ttf" as="font" type="font/ttf">
+  <link rel="stylesheet" href="https://chinese-fonts-cdn.konghayao.deno.net/packages/syst/dist/SourceHanSerifCN/result.css">
   <title>机动车抵押登记申请表</title>
   <style>
-    @font-face {
-      font-family: "AppSimSun";
-      src: url("assets/Font/simsun.ttf") format("truetype");
-      font-weight: 400;
-      font-style: normal;
-      font-display: block;
-    }
-
     :root {
       --a4-width: 21cm;
       --a4-height: 29.7cm;
@@ -59,7 +51,7 @@
       padding: 0;
       background: var(--bg);
       color: var(--ink);
-      font-family: "AppSimSun", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif;
+      font-family: "Source Han Serif CN VF", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif;
       text-wrap: pretty;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
@@ -359,7 +351,7 @@
 
     .sheet,
     .sheet * {
-      font-family: "AppSimSun", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif;
+      font-family: "Source Han Serif CN VF", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif;
       font-synthesis: weight;
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
@@ -420,7 +412,7 @@
       font-weight: 700;
       letter-spacing: 0;
       white-space: nowrap;
-      font-family: "AppSimSun", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif;
+      font-family: "Source Han Serif CN VF", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif;
     }
 
     .request-options {
@@ -2453,12 +2445,12 @@
       exportSheet.style.boxShadow = "none";
       exportSheet.style.transform = "none";
       exportSheet.style.overflow = "hidden";
-      exportSheet.style.fontFamily = '"AppSimSun", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif';
+      exportSheet.style.fontFamily = '"Source Han Serif CN VF", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif';
       exportSheet.style.webkitTextSizeAdjust = "100%";
       exportSheet.style.textSizeAdjust = "100%";
 
       exportSheet.querySelectorAll("*").forEach((node) => {
-        node.style.fontFamily = '"AppSimSun", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif';
+        node.style.fontFamily = '"Source Han Serif CN VF", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif';
       });
 
       const exportTableScroll = exportSheet.querySelector(".table-scroll");
@@ -2493,11 +2485,11 @@
               return;
             }
 
-            clonedSheet.style.fontFamily = '"AppSimSun", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif';
+            clonedSheet.style.fontFamily = '"Source Han Serif CN VF", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif';
             clonedSheet.style.webkitTextSizeAdjust = "100%";
             clonedSheet.style.textSizeAdjust = "100%";
             clonedSheet.querySelectorAll("*").forEach((node) => {
-              node.style.fontFamily = '"AppSimSun", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif';
+              node.style.fontFamily = '"Source Han Serif CN VF", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif';
             });
           },
         });

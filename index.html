@@ -39,6 +39,11 @@
       box-sizing: border-box;
     }
 
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
     html,
     body {
       margin: 0;
@@ -844,8 +849,8 @@
     </div>
   </div>
 
-  <script src="assets/vendor/html2canvas.min.js?v=20260512d"></script>
-  <script src="assets/vendor/jspdf.umd.min.js?v=20260512d"></script>
+  <script src="assets/vendor/html2canvas.min.js?v=20260512e"></script>
+  <script src="assets/vendor/jspdf.umd.min.js?v=20260512e"></script>
   <script>
     const agentsData = [
   {
@@ -888,7 +893,7 @@
     "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
     "bankAgentZip": "400030",
     "bankAgentPhone": "13756563133",
-    "ownerSignLabel": "机动车所有人（代理人）签字：",
+    "ownerSignLabel": "机动车所有人（代理人） 签字：",
     "bankSignLabel": "抵押权人/质权人签字：中国工商银行股份有限公司重庆沙坪坝支行",
     "agentSignLabel": "代理人签字：",
     "sealPath": "assets/seals/agent-001-seal.png",
@@ -2073,15 +2078,15 @@
     "plateNumber": "/",
     "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
     "ownerAgentName": "靳嘉洺",
-    "ownerAgentAddress": "重庆市沙坪坝区渝碚路66号华夏银座21-1恒泰汽车办公室",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
     "ownerAgentZip": "400030",
     "ownerAgentPhone": "19568261336",
     "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
-    "bankAddress": "重庆市沙坪坝区渝碚路66号华夏银座21-1恒泰汽车办公室",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
     "bankZip": "400030",
     "bankPhone": "18620401162",
     "bankAgentName": "靳嘉洺",
-    "bankAgentAddress": "重庆市沙坪坝区渝碚路66号华夏银座21-1恒泰汽车办公室",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
     "bankAgentZip": "400030",
     "bankAgentPhone": "18620401162",
     "ownerSignLabel": "机动车所有人（代理人） 签字：",
@@ -2119,15 +2124,15 @@
     "plateNumber": "/",
     "requestType": "☑抵押登记 □解除抵押登记 □质押 □解除质押",
     "ownerAgentName": "马骏",
-    "ownerAgentAddress": "重庆市沙坪坝区渝碚路66号华夏银座21-1恒泰汽车办公室",
+    "ownerAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
     "ownerAgentZip": "400030",
     "ownerAgentPhone": "17790003635",
     "bankName": "中国工商银行股份有限公司重庆沙坪坝支行",
-    "bankAddress": "重庆市沙坪坝区渝碚路66号华夏银座21-1恒泰汽车办公室",
+    "bankAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
     "bankZip": "400030",
-    "bankPhone": "18620401162",
+    "bankPhone": "17790003635",
     "bankAgentName": "马骏",
-    "bankAgentAddress": "重庆市沙坪坝区渝碚路66号华夏银座21-1恒泰汽车办公室",
+    "bankAgentAddress": "重庆市石桥铺区石杨路20号华硕电脑第二商业综合楼15楼1501",
     "bankAgentZip": "400030",
     "bankAgentPhone": "18620401162",
     "ownerSignLabel": "机动车所有人（代理人） 签字：",
@@ -2319,6 +2324,41 @@
         throw new Error("PDF 导出库未加载");
       }
 
+      function normalizeCanvasToA4(sourceCanvas) {
+        const targetAspect = A4_WIDTH_PX / A4_HEIGHT_PX;
+        const sourceAspect = sourceCanvas.width / sourceCanvas.height;
+        if (!Number.isFinite(sourceAspect) || sourceCanvas.width < 2 || sourceCanvas.height < 2) {
+          return sourceCanvas;
+        }
+        if (Math.abs(sourceAspect - targetAspect) < 0.001) {
+          return sourceCanvas;
+        }
+
+        let sw = sourceCanvas.width;
+        let sh = sourceCanvas.height;
+        let sx = 0;
+        let sy = 0;
+
+        if (sourceAspect > targetAspect) {
+          sw = Math.round(sourceCanvas.height * targetAspect);
+          sx = Math.round((sourceCanvas.width - sw) / 2);
+        } else {
+          sh = Math.round(sourceCanvas.width / targetAspect);
+          sy = Math.round((sourceCanvas.height - sh) / 2);
+        }
+
+        const targetCanvas = document.createElement("canvas");
+        targetCanvas.width = sw;
+        targetCanvas.height = sh;
+        const context = targetCanvas.getContext("2d", { alpha: false });
+        context.imageSmoothingEnabled = true;
+        context.imageSmoothingQuality = "high";
+        context.fillStyle = "#ffffff";
+        context.fillRect(0, 0, sw, sh);
+        context.drawImage(sourceCanvas, sx, sy, sw, sh, 0, 0, sw, sh);
+        return targetCanvas;
+      }
+
       const PDF_MAX_BYTES = 500 * 1024;
       const compressionAttempts = [
         { ratio: 1, quality: 0.82 },
@@ -2345,6 +2385,7 @@
 
       const exportSheet = sheet.cloneNode(true);
       exportSheet.style.width = `${A4_WIDTH_PX}px`;
+      exportSheet.style.height = `${A4_HEIGHT_PX}px`;
       exportSheet.style.minHeight = `${A4_HEIGHT_PX}px`;
       exportSheet.style.margin = "0";
       exportSheet.style.boxShadow = "none";
@@ -2399,9 +2440,10 @@
           },
         });
 
+        const normalizedCanvas = normalizeCanvasToA4(canvas);
         let pdfBlob = null;
         for (const attempt of compressionAttempts) {
-          pdfBlob = buildPdfBlobFromCanvas(canvas, attempt.ratio, attempt.quality);
+          pdfBlob = buildPdfBlobFromCanvas(normalizedCanvas, attempt.ratio, attempt.quality);
           if (pdfBlob.size <= PDF_MAX_BYTES) {
             break;
           }
@@ -2497,6 +2539,10 @@
     );
     customerNameInput.addEventListener("input", fillCustomerName);
     window.addEventListener("resize", updatePreviewScale);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", updatePreviewScale);
+      window.visualViewport.addEventListener("scroll", updatePreviewScale);
+    }
     printButton.addEventListener("click", () => window.print());
     pdfButton.addEventListener("click", async () => {
       const previousText = pdfButton.textContent;

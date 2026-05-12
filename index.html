@@ -45,7 +45,7 @@
       padding: 0;
       background: var(--bg);
       color: var(--ink);
-      font-family: "宋体", "NSimSun", serif;
+      font-family: "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif;
       text-wrap: pretty;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
@@ -343,7 +343,10 @@
 
     .sheet,
     .sheet * {
-      font-family: "SimSun", "宋体", "NSimSun", "Songti SC", "STSong", serif;
+      font-family: "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif;
+      font-synthesis: weight;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     .title {
@@ -393,7 +396,7 @@
       font-weight: 700;
       letter-spacing: 0;
       white-space: nowrap;
-      font-family: "宋体", "SimSun", "NSimSun", serif;
+      font-family: "Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif;
     }
 
     .request-options {
@@ -502,31 +505,40 @@
     }
 
     .sign-box {
-      min-height: 188px;
+      height: 188px;
       padding: 0;
+      position: relative;
+      vertical-align: top;
     }
 
     .bank-sign-box {
-      min-height: 100px;
+      height: 100px;
     }
 
     .note-box {
-      min-height: 158px;
+      height: 158px;
       padding: 0;
+      position: relative;
     }
 
     .cell-stack {
       display: flex;
       flex-direction: column;
+      align-items: stretch;
+      box-sizing: border-box;
+    }
+
+    .sign-box .cell-stack {
+      position: absolute;
+      inset: 0;
+      padding: 8px 8px 10px;
       justify-content: space-between;
       gap: 12px;
-      align-items: stretch;
-      height: 100%;
-      min-height: inherit;
-      padding: 10px 8px 12px;
     }
 
     .note-box .cell-stack {
+      position: absolute;
+      inset: 0;
       justify-content: center;
       align-items: center;
       font-size: 12pt;
@@ -2338,10 +2350,12 @@
       exportSheet.style.boxShadow = "none";
       exportSheet.style.transform = "none";
       exportSheet.style.overflow = "hidden";
-      exportSheet.style.fontFamily = '"SimSun", "宋体", "NSimSun", "Songti SC", "STSong", serif';
+      exportSheet.style.fontFamily = '"Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif';
+      exportSheet.style.webkitTextSizeAdjust = "100%";
+      exportSheet.style.textSizeAdjust = "100%";
 
       exportSheet.querySelectorAll("*").forEach((node) => {
-        node.style.fontFamily = '"SimSun", "宋体", "NSimSun", "Songti SC", "STSong", serif';
+        node.style.fontFamily = '"Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif';
       });
 
       const exportTableScroll = exportSheet.querySelector(".table-scroll");
@@ -2369,14 +2383,18 @@
           windowHeight: Math.ceil(A4_HEIGHT_PX),
           logging: false,
           onclone: (clonedDoc) => {
+            clonedDoc.documentElement.style.webkitTextSizeAdjust = "100%";
+            clonedDoc.documentElement.style.textSizeAdjust = "100%";
             const clonedSheet = clonedDoc.querySelector(".sheet");
             if (!clonedSheet) {
               return;
             }
 
-            clonedSheet.style.fontFamily = '"SimSun", "宋体", "NSimSun", "Songti SC", "STSong", serif';
+            clonedSheet.style.fontFamily = '"Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif';
+            clonedSheet.style.webkitTextSizeAdjust = "100%";
+            clonedSheet.style.textSizeAdjust = "100%";
             clonedSheet.querySelectorAll("*").forEach((node) => {
-              node.style.fontFamily = '"SimSun", "宋体", "NSimSun", "Songti SC", "STSong", serif';
+              node.style.fontFamily = '"Songti SC", "STSong", "SimSun", "宋体", "NSimSun", serif';
             });
           },
         });
@@ -2430,7 +2448,7 @@
       renderRequestType(current.requestType);
 
       setImage(bankSeal, current.sealPath);
-      setImage(ownerSignature， current.signaturePath);
+      setImage(ownerSignature, current.signaturePath);
       setImage(agentSignature, current.signaturePath);
       ownerSignatureEmpty.hidden = Boolean(current.signaturePath);
       agentSignatureEmpty.hidden = Boolean(current.signaturePath);

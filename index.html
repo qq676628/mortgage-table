@@ -2413,17 +2413,18 @@
         return targetCanvas;
       }
 
-      const PDF_MAX_BYTES = 500 * 1024;
+      const PDF_MAX_BYTES = 350 * 1024;
       const compressionAttempts = [
-        { ratio: 1, quality: 0.82 },
-        { ratio: 0.92, quality: 0.76 },
-        { ratio: 0.86, quality: 0.7 },
-        { ratio: 0.8, quality: 0.64 },
-        { ratio: 0.74, quality: 0.58 },
-        { ratio: 0.68, quality: 0.52 },
-        { ratio: 0.62, quality: 0.46 },
-        { ratio: 0.56, quality: 0.4 },
-        { ratio: 0.5, quality: 0.34 },
+        { ratio: 0.92, quality: 0.74 },
+        { ratio: 0.86, quality: 0.68 },
+        { ratio: 0.8, quality: 0.62 },
+        { ratio: 0.74, quality: 0.56 },
+        { ratio: 0.68, quality: 0.5 },
+        { ratio: 0.62, quality: 0.44 },
+        { ratio: 0.56, quality: 0.38 },
+        { ratio: 0.5, quality: 0.32 },
+        { ratio: 0.46, quality: 0.28 },
+        { ratio: 0.42, quality: 0.24 },
       ];
 
       const host = document.createElement("div");
@@ -2508,7 +2509,7 @@
         }
 
         if (pdfBlob.size > PDF_MAX_BYTES) {
-          throw new Error("PDF 压缩后仍超过 500KB");
+          throw new Error("PDF 压缩后仍超过 350KB");
         }
 
         const downloadUrl = URL.createObjectURL(pdfBlob);
